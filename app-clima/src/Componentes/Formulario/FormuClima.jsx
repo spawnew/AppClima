@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 const FormCancion = ({ obtener }) => {
 
-    const [form, setForm] = useState({ latitud: 0, longitud: 0 })
+    const [form, setForm] = useState({ lugar:"" })
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -13,7 +13,7 @@ const FormCancion = ({ obtener }) => {
         e.preventDefault()
         console.log(form)
         obtener(form)
-        setForm({ latitud: 0, longitud: 0 })
+        setForm({ lugar:"" })
     }
     return (
         <div>
@@ -24,10 +24,9 @@ const FormCancion = ({ obtener }) => {
 
 
             <form onSubmit={handleSubmit}>
-                <input type="number" onChange={handleChange} name="latitud" value={form.latitud} placeholder='ingrese la  latitud'>
+                <input type="text" onChange={handleChange} name="lugar" value={form.latitud} placeholder='ingrese un lugar'>
                 </input>
-                <input type="number" onChange={handleChange} name="longitud" value={form.longitud} placeholder='ingrese la longitud '>
-                </input>
+               
 
                 <input type="submit" ></input>
 

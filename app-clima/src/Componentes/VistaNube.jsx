@@ -3,15 +3,42 @@ import Clima from './Clima';
 import FormuClima from './Formulario/FormuClima';
 const VistaNube = () => {
     const [dato, setDato] = useState(null);
-    const [ubicacion, setUbicacion] = useState({ latitud: 0, longitud: 0 });
-    const obtener = (form) => {
+    const [ubicacion, setUbicacion] = useState({ ubicacion: null });
+    const [ciudad, setCiudad] = useState({latitud : 0, longitud: 0})
+
+const obtener = (form) => {
         console.log(form);
         setUbicacion({
-            latitud: parseFloat(form.latitud),
-            longitud: parseFloat(form.longitud)
+          lugar: form.lugar
         })
     }
-const{ latitud, longitud } = ubicacion 
+
+
+const {lugar}=ubicacion
+
+
+    const obtenerCiudad = () => {
+    
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${lugar}&appid=81bf34a5328649550ed81c131ec9cb61`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCiudad({ latitud: data[0].lat, longitud: data[0].lon })
+            })
+            .catch(err => console.error(err));
+           
+    }
+
+    useEffect(() => {
+        obtenerCiudad();
+    }, [lugar]);
+    
+    const { latitud, longitud } = ciudad
+    
+    
+    
+ 
+
 
     const clima = () => {
         if (latitud && longitud) {
