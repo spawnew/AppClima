@@ -18,15 +18,15 @@ const {lugar}=ubicacion
 
 
     const obtenerCiudad = () => {
-    
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${lugar}&appid=81bf34a5328649550ed81c131ec9cb61`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setCiudad({ latitud: data[0].lat, longitud: data[0].lon })
-            })
-            .catch(err => console.error(err));
-           
+        if (lugar != "") {
+            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${lugar}&appid=81bf34a5328649550ed81c131ec9cb61`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setCiudad({ latitud: data[0].lat, longitud: data[0].lon })
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     useEffect(() => {
@@ -61,11 +61,19 @@ const {lugar}=ubicacion
   
   
     return (
-        <div> <FormuClima
-        obtener={obtener}
-        />
+        <div className= " flex flex-col  bg-blue-900 min-h-screen  items-center justify-center align-items: center">
+            
+            <div className=" bg-blue-300 p-6 rounded-lg shadow-lg flex flex-col items-center gap-4">
+                     <p className='text-2xl'><b>{ lugar}</b></p>
+                <FormuClima
+                    obtener={obtener}
+                 />
+            
+        
+            <div>
+      
             {dato && dato.map((item, index) => (
-                <div key={index}>
+                <div  key={index}>
                      
                     
                     <Clima
@@ -82,10 +90,10 @@ const {lugar}=ubicacion
                     />
 
 
+</div>
 
-
-                </div> 
-        
+              
+       
             
             
             
@@ -94,9 +102,9 @@ const {lugar}=ubicacion
      }
    
           
-
+  </div> 
   
-
+</div>
 
 
 
