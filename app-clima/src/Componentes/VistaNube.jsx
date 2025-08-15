@@ -19,7 +19,7 @@ const {lugar}=ubicacion
 
     const obtenerCiudad = () => {
         if (lugar != "") {
-            fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${lugar}&appid=81bf34a5328649550ed81c131ec9cb61`)
+            fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${lugar}&appid=81bf34a5328649550ed81c131ec9cb61`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
