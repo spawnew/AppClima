@@ -19,7 +19,7 @@ const FormClima = ({ obtener }) => {
         <div className='bg-blue-300 m-2 p-2 rounded-lg shadow- text-black flex flex-col justify-center align-center '>
 
           
-                 <h3 className='text-blue-950'><b>INGRESE UN LUGAR</b> </h3>
+                 <h3 className='text-blue-950'><b>Ingresa un lugar</b> </h3>
 
             
 
