@@ -63,7 +63,7 @@ const {lugar}=ubicacion
     return (
         <div className= " flex flex-col  bg-blue-900 min-h-screen  items-center justify-center align-items: center">
             
-            <div className=" bg-blue-300 p-6 rounded-lg shadow-lg flex flex-col items-center gap-4">
+            <div className=" bg-blue-300 p-6 rounded-lg shadow-lg flex flex-col items-center gap-4 border-3 border-black">
                      <p className='text-2xl'><b>{ lugar}</b></p>
                 <FormuClima
                     obtener={obtener}
